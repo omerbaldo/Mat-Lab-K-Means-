@@ -1,5 +1,4 @@
 function [idx,C,SD,D] = MyKmeans(X,K,C0,numIter)
-    
       SD = zeros(1,numIter);   % sum of sumD at each iteration 
       rows = size(X,1);        % number of rows 
       cols = size(X,2);        % number of columns
@@ -9,10 +8,8 @@ function [idx,C,SD,D] = MyKmeans(X,K,C0,numIter)
       D = zeros(rows,K);       % n x k matrix containing distances for each point to every center 
       idxPerIteration = zeros(numIter,rows);
 
-      
       for i=1:numIter
-
-          ixxxx = i
+          ixxxx = i;
           for p= 1:rows                        
             min_distance_index = 1;          
             min_distance = sum((C(1,:)-X(p,:)).^2);    
@@ -50,14 +47,13 @@ function [idx,C,SD,D] = MyKmeans(X,K,C0,numIter)
            sumD(idx(i,1), 1) = sumD(idx(i,1), 1) + D(i,idx(i,1));
          end
          
-         ss = 0
+         ss = 0;
          for i=1:K
            ss = ss + sumD(i,1);
          end 
          SD(1,ixxxx) = ss;
          
          idxPerIteration(ixxxx,:) = idx';
-         disp('dd');
           
       end % End Loop
 
@@ -79,7 +75,7 @@ function [idx,C,SD,D] = MyKmeans(X,K,C0,numIter)
            sumD(idx(i,1), 1) = sumD(idx(i,1), 1) + D(i,idx(i,1));
       end 
       
-      ss = 0
+      ss = 0;
       for i=1:K
           ss = ss + sumD(i,1);
       end 
